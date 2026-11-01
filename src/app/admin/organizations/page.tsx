@@ -33,7 +33,13 @@ export default async function OrganizationsAdminPage() {
         {/* Creation Form */}
         <div className="p-6 border rounded-xl bg-card shadow-sm h-fit">
           <h2 className="text-xl font-semibold mb-4">Register New Organization</h2>
-          <form action={createOrganization} className="space-y-4">
+          <form 
+            action={async (formData) => {
+              "use server";
+              await createOrganization(formData);
+            }} 
+            className="space-y-4"
+          >
             <div>
               <label className="block text-sm font-medium mb-1">Organization Name</label>
               <input
